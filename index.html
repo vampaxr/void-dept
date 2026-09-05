@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,28 @@
 
     <title>VOID DEPT.</title>
 
+    <!-- MedievalSharp -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            background: #090909;
+            color: #e8e5e0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #fff;
-            color: #111;
+            overflow-x: hidden;
         }
 
         a {
@@ -24,262 +36,627 @@
             text-decoration: none;
         }
 
-        /* NAVIGATION */
+        ::selection {
+            background: #e8e5e0;
+            color: #090909;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 22px 30px;
+            height: 76px;
+
+            padding: 0 30px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            mix-blend-mode: difference;
-            color: white;
+            justify-content: space-between;
+
+            z-index: 100;
+
+            background: rgba(9, 9, 9, 0.35);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-family: "MedievalSharp", cursive;
+            font-size: 25px;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         nav {
             display: flex;
-            gap: 28px;
-            font-size: 12px;
+            gap: 30px;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
-        /* HERO */
+        nav a {
+            opacity: 0.65;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
 
         .hero {
-            height: 100vh;
-            min-height: 650px;
             position: relative;
+
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+
             overflow: hidden;
-            background: #111;
+
+            background: #050505;
         }
 
         .hero img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
-            opacity: 0.9;
+
+            filter:
+                grayscale(100%)
+                brightness(35%)
+                contrast(125%);
+
+            transform: scale(1.02);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.2) 0%,
+                    rgba(0,0,0,0.05) 40%,
+                    rgba(0,0,0,0.85) 100%
+                );
+
+            pointer-events: none;
         }
 
         .hero-content {
             position: absolute;
-            bottom: 35px;
+
             left: 30px;
-            color: white;
+            bottom: 45px;
+
+            z-index: 2;
         }
 
-        .hero-content p {
-            font-size: 11px;
+        .hero-label {
+            font-size: 10px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+
+            color: #aaa;
+
+            margin-bottom: 15px;
         }
 
-        .hero-content h1 {
-            font-size: clamp(60px, 12vw, 180px);
-            line-height: 0.8;
-            letter-spacing: -7px;
-            font-weight: 700;
+        .hero-title {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(80px, 15vw, 220px);
+
+            line-height: 0.75;
+
+            letter-spacing: 2px;
+
+            font-weight: 400;
         }
 
-        /* COLLECTION */
+        .hero-subtitle {
+            margin-top: 25px;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            color: #999;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           COLLECTION
+        ========================================= */
 
         .collection {
-            padding: 100px 30px;
+            padding: 130px 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid #252525;
+
+            margin-bottom: 20px;
         }
 
         .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 40px;
+            font-family: "MedievalSharp", cursive;
+
+            font-size: 42px;
+
+            font-weight: 400;
         }
 
-        .section-title h2 {
-            font-size: 14px;
-            font-weight: 500;
+        .section-number {
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            color: #666;
+
             text-transform: uppercase;
         }
 
-        .section-title span {
-            font-size: 11px;
-            color: #777;
-        }
 
-        /* PRODUCTS */
+        /* =========================================
+           PRODUCTS
+        ========================================= */
 
         .products {
             display: grid;
+
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+
+            gap: 35px 12px;
         }
 
         .product {
-            position: relative;
+            display: block;
+
             cursor: pointer;
         }
 
         .product-image {
+            position: relative;
+
             width: 100%;
             aspect-ratio: 4 / 5;
-            background: #eee;
+
             overflow: hidden;
+
+            background: #111;
+
+            border: 1px solid #1d1d1d;
+        }
+
+        .product-image::after {
+            content: "VIEW";
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            font-size: 9px;
+            letter-spacing: 3px;
+
+            color: white;
+
+            opacity: 0;
+
+            transition: opacity 0.4s ease;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
-            transition: transform 0.5s ease;
+
+            filter:
+                grayscale(70%)
+                brightness(55%)
+                contrast(115%);
+
+            transition:
+                transform 0.7s ease,
+                filter 0.7s ease;
         }
 
-        .product:hover img {
-            transform: scale(1.03);
+        .product:hover .product-image img {
+            transform: scale(1.045);
+
+            filter:
+                grayscale(35%)
+                brightness(65%)
+                contrast(115%);
+        }
+
+        .product:hover .product-image::after {
+            opacity: 1;
         }
 
         .product-info {
             display: flex;
+
             justify-content: space-between;
-            padding: 12px 2px 30px;
-            font-size: 11px;
+
+            padding: 14px 2px 0;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
             text-transform: uppercase;
         }
 
-        /* LOOKBOOK */
-
-        .lookbook {
-            height: 90vh;
-            position: relative;
-            overflow: hidden;
-            background: #111;
+        .product-name {
+            color: #d8d5d0;
         }
 
-        .lookbook img {
+        .product-price {
+            color: #666;
+        }
+
+
+        /* =========================================
+           FEATURE / LOOKBOOK
+        ========================================= */
+
+        .feature {
+            position: relative;
+
+            height: 100vh;
+            min-height: 650px;
+
+            overflow: hidden;
+
+            border-top: 1px solid #202020;
+            border-bottom: 1px solid #202020;
+        }
+
+        .feature img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
+            filter:
+                grayscale(100%)
+                brightness(28%)
+                contrast(130%);
+
+            transition: transform 1.2s ease;
         }
 
-        .lookbook-text {
+        .feature:hover img {
+            transform: scale(1.025);
+        }
+
+        .feature-overlay {
             position: absolute;
-            bottom: 30px;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0,0,0,0.7) 100%
+                );
+        }
+
+        .feature-content {
+            position: absolute;
+
             left: 30px;
-            color: white;
+            bottom: 40px;
+
+            z-index: 2;
         }
 
-        .lookbook-text p {
-            font-size: 11px;
+        .feature-label {
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            color: #888;
+
             text-transform: uppercase;
-            margin-bottom: 10px;
+
+            margin-bottom: 15px;
         }
 
-        .lookbook-text h2 {
-            font-size: clamp(50px, 9vw, 130px);
-            letter-spacing: -5px;
-            line-height: 0.85;
+        .feature-title {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(70px, 12vw, 180px);
+
+            line-height: 0.8;
+
+            font-weight: 400;
         }
 
-        /* FOOTER */
+        .feature-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding-bottom: 7px;
+
+            border-bottom: 1px solid #777;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #aaa;
+
+            transition:
+                color 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .feature-link:hover {
+            color: white;
+            border-color: white;
+        }
+
+
+        /* =========================================
+           MANIFESTO
+        ========================================= */
+
+        .manifesto {
+            padding: 170px 30px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 2fr;
+
+            gap: 40px;
+
+            border-bottom: 1px solid #202020;
+        }
+
+        .manifesto-label {
+            font-size: 9px;
+
+            letter-spacing: 3px;
+
+            color: #555;
+
+            text-transform: uppercase;
+        }
+
+        .manifesto-text {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(35px, 5vw, 75px);
+
+            line-height: 1.05;
+
+            color: #d8d5d0;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
-            padding: 70px 30px 30px;
-            background: #111;
-            color: white;
+            padding: 90px 30px 30px;
+
+            background: #060606;
         }
 
         .footer-top {
             display: flex;
+
             justify-content: space-between;
-            margin-bottom: 120px;
+
+            margin-bottom: 150px;
         }
 
         .footer-logo {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(50px, 8vw, 110px);
+
+            line-height: 0.8;
         }
 
         .footer-links {
             display: flex;
-            gap: 80px;
+
+            gap: 100px;
         }
 
-        .footer-links div {
+        .footer-column {
             display: flex;
+
             flex-direction: column;
-            gap: 10px;
-            font-size: 11px;
+
+            gap: 13px;
+        }
+
+        .footer-heading {
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            color: #555;
+
             text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            color: #999;
+
+            text-transform: uppercase;
+
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
         }
 
         .footer-bottom {
             display: flex;
+
             justify-content: space-between;
-            font-size: 10px;
-            color: #777;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #1d1d1d;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+
+            color: #444;
+
             text-transform: uppercase;
         }
 
-        /* MOBILE */
+
+        /* =========================================
+           MOBILE
+        ========================================= */
 
         @media (max-width: 700px) {
+
             header {
-                padding: 18px;
+                height: 65px;
+
+                padding: 0 18px;
+            }
+
+            .logo {
+                font-size: 20px;
             }
 
             nav {
                 gap: 12px;
+
+                font-size: 8px;
+            }
+
+            nav a:nth-child(2),
+            nav a:nth-child(3) {
+                display: none;
             }
 
             .hero-content {
                 left: 18px;
-                bottom: 25px;
+                bottom: 30px;
             }
 
-            .hero-content h1 {
-                letter-spacing: -4px;
+            .hero-title {
+                font-size: 90px;
             }
 
             .collection {
-                padding: 70px 18px;
+                padding: 90px 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
             }
 
             .products {
                 grid-template-columns: 1fr;
             }
 
-            .lookbook-text {
+            .feature-content {
                 left: 18px;
+                bottom: 30px;
+            }
+
+            .manifesto {
+                padding: 100px 18px;
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+            .manifesto-text {
+                font-size: 38px;
+            }
+
+            footer {
+                padding: 70px 18px 25px;
             }
 
             .footer-top {
                 flex-direction: column;
-                gap: 60px;
+
+                gap: 70px;
+
+                margin-bottom: 100px;
             }
 
             .footer-links {
-                gap: 40px;
+                gap: 50px;
             }
 
-            footer {
-                padding: 60px 18px 25px;
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 8px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
 <header>
-    <a href="#" class="logo">VOID DEPT.</a>
+
+    <a href="#" class="logo">
+        VØID DEPT.
+    </a>
 
     <nav>
         <a href="#">Shop</a>
@@ -287,79 +664,204 @@
         <a href="#">About</a>
         <a href="#">Cart (0)</a>
     </nav>
+
 </header>
 
 
-<!-- HERO -->
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="hero">
 
-    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2000&q=90">
+    <img
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=90"
+        alt="VOID DEPT. Collection"
+    >
 
     <div class="hero-content">
-        <p>Collection 001 — 2026</p>
-        <h1>VOID</h1>
+
+        <div class="hero-label">
+            Collection 001 — 2026
+        </div>
+
+        <h1 class="hero-title">
+            VØID
+        </h1>
+
+        <div class="hero-subtitle">
+            Garments for the undefined
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- PRODUCTS -->
+<!-- =========================================
+     COLLECTION
+========================================= -->
 
 <section class="collection">
 
-    <div class="section-title">
-        <h2>Collection 001</h2>
-        <span>04 Pieces</span>
+    <div class="section-header">
+
+        <h2 class="section-title">
+            Collection 001
+        </h2>
+
+        <span class="section-number">
+            04 Pieces
+        </span>
+
     </div>
+
 
     <div class="products">
 
+
+        <!-- PRODUCT 01 -->
+
         <a href="#" class="product">
+
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=90">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
+                    alt="VOID Denim 001"
+                >
+
             </div>
 
             <div class="product-info">
-                <span>VOID Denim 001</span>
-                <span>$180</span>
+
+                <span class="product-name">
+                    VOID Denim 001
+                </span>
+
+                <span class="product-price">
+                    $180
+                </span>
+
             </div>
+
         </a>
 
 
+        <!-- PRODUCT 02 -->
+
         <a href="#" class="product">
+
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=90">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1400&q=90"
+                    alt="VOID Tee 001"
+                >
+
             </div>
 
             <div class="product-info">
-                <span>VOID Tee 001</span>
-                <span>$85</span>
+
+                <span class="product-name">
+                    VOID Tee 001
+                </span>
+
+                <span class="product-price">
+                    $85
+                </span>
+
             </div>
+
         </a>
 
 
+        <!-- PRODUCT 03 -->
+
         <a href="#" class="product">
+
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=90">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1400&q=90"
+                    alt="VOID Jacket 001"
+                >
+
             </div>
 
             <div class="product-info">
-                <span>VOID Jacket 001</span>
-                <span>$240</span>
+
+                <span class="product-name">
+                    VOID Jacket 001
+                </span>
+
+                <span class="product-price">
+                    $240
+                </span>
+
             </div>
+
         </a>
 
 
+        <!-- PRODUCT 04 -->
+
         <a href="#" class="product">
+
             <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1200&q=90">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1400&q=90"
+                    alt="VOID Denim 002"
+                >
+
             </div>
 
             <div class="product-info">
-                <span>VOID Denim 002</span>
-                <span>$195</span>
+
+                <span class="product-name">
+                    VOID Denim 002
+                </span>
+
+                <span class="product-price">
+                    $195
+                </span>
+
             </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     LOOKBOOK
+========================================= -->
+
+<section class="feature">
+
+    <img
+        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2400&q=90"
+        alt="VOID DEPT. Archive"
+    >
+
+    <div class="feature-overlay"></div>
+
+    <div class="feature-content">
+
+        <div class="feature-label">
+            VOID DEPT. — Archive
+        </div>
+
+        <h2 class="feature-title">
+            001
+        </h2>
+
+        <a href="#" class="feature-link">
+            Enter Archive
         </a>
 
     </div>
@@ -367,54 +869,99 @@
 </section>
 
 
-<!-- LOOKBOOK -->
+<!-- =========================================
+     MANIFESTO
+========================================= -->
 
-<section class="lookbook">
+<section class="manifesto">
 
-    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2000&q=90">
+    <div class="manifesto-label">
+        Department Statement
+    </div>
 
-    <div class="lookbook-text">
-        <p>VOID DEPT. — ARCHIVE</p>
-        <h2>001</h2>
+    <div class="manifesto-text">
+        We create garments
+        for those who exist
+        somewhere between
+        nothing and everything.
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
     <div class="footer-top">
 
         <div class="footer-logo">
-            VOID DEPT.
+            VØID<br>
+            DEPT.
         </div>
+
 
         <div class="footer-links">
 
-            <div>
+            <div class="footer-column">
+
+                <div class="footer-heading">
+                    Department
+                </div>
+
                 <a href="#">Shop</a>
                 <a href="#">Archive</a>
                 <a href="#">About</a>
+
             </div>
 
-            <div>
-                <a href="#">Instagram</a>
+
+            <div class="footer-column">
+
+                <div class="footer-heading">
+                    Information
+                </div>
+
                 <a href="#">Contact</a>
                 <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <div class="footer-heading">
+                    Social
+                </div>
+
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+
             </div>
 
         </div>
 
     </div>
 
+
     <div class="footer-bottom">
-        <span>© 2026 VOID DEPT.</span>
-        <span>All Rights Reserved</span>
+
+        <span>
+            © 2026 VØID DEPT.
+        </span>
+
+        <span>
+            All Rights Reserved
+        </span>
+
     </div>
 
 </footer>
 
+
 </body>
 </html>
+```
