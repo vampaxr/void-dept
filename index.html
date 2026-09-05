@@ -24,8 +24,8 @@
         }
 
         body {
-            background: #0a0a0a;
-            color: #f1f0ed;
+            background: #090909;
+            color: #eee;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -36,8 +36,8 @@
         }
 
         ::selection {
-            background: #f1f0ed;
-            color: #0a0a0a;
+            background: #eee;
+            color: #090909;
         }
 
 
@@ -51,7 +51,7 @@
             left: 0;
 
             width: 100%;
-            height: 70px;
+            height: 72px;
 
             padding: 0 28px;
 
@@ -74,7 +74,7 @@
 
         nav {
             display: flex;
-            gap: 28px;
+            gap: 30px;
 
             font-size: 9px;
             letter-spacing: 1.8px;
@@ -82,11 +82,12 @@
         }
 
         nav a {
+            opacity: .85;
             transition: opacity .25s ease;
         }
 
         nav a:hover {
-            opacity: .45;
+            opacity: .4;
         }
 
 
@@ -102,6 +103,8 @@
             min-height: 700px;
 
             overflow: hidden;
+
+            background: #050505;
         }
 
         .hero img {
@@ -113,25 +116,47 @@
             filter:
                 brightness(48%)
                 contrast(115%)
-                grayscale(35%);
+                grayscale(30%);
+
+            transform: scale(1.01);
 
             transition: transform 1.5s ease;
         }
 
         .hero:hover img {
-            transform: scale(1.015);
+            transform: scale(1.025);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.1),
+                    rgba(0,0,0,.05) 50%,
+                    rgba(0,0,0,.75)
+                );
+
+            pointer-events: none;
         }
 
         .hero-info {
             position: absolute;
 
             left: 28px;
-            bottom: 30px;
+            bottom: 28px;
 
             z-index: 2;
 
             font-size: 9px;
+            line-height: 1.7;
+
             letter-spacing: 2px;
+
             text-transform: uppercase;
         }
 
@@ -141,47 +166,19 @@
 
 
         /* =========================
-           INTRO
-        ========================= */
-
-        .intro {
-            min-height: 75vh;
-
-            padding: 160px 28px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-        }
-
-        .intro h1 {
-            max-width: 1000px;
-
-            font-family: "MedievalSharp", cursive;
-
-            font-size: clamp(45px, 7vw, 100px);
-
-            font-weight: 400;
-
-            line-height: 1;
-
-            letter-spacing: .5px;
-        }
-
-
-        /* =========================
-           FEATURE IMAGE
+           EDITORIAL
         ========================= */
 
         .editorial {
-            width: 100%;
-            height: 95vh;
-
             position: relative;
 
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+
             overflow: hidden;
+
+            border-bottom: 1px solid #1d1d1d;
         }
 
         .editorial img {
@@ -191,9 +188,9 @@
             object-fit: cover;
 
             filter:
-                brightness(50%)
-                contrast(110%)
-                grayscale(25%);
+                brightness(45%)
+                contrast(115%)
+                grayscale(40%);
 
             transition: transform 1.2s ease;
         }
@@ -209,7 +206,10 @@
             bottom: 28px;
 
             font-size: 9px;
+
             letter-spacing: 2px;
+
+            color: #aaa;
 
             text-transform: uppercase;
         }
@@ -220,19 +220,20 @@
         ========================= */
 
         .shop {
-            padding: 150px 28px;
+            padding: 150px 28px 170px;
         }
 
         .shop-header {
             display: flex;
+
             justify-content: space-between;
             align-items: center;
 
-            margin-bottom: 60px;
+            margin-bottom: 55px;
         }
 
         .shop-header h2 {
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 400;
 
@@ -241,7 +242,7 @@
             text-transform: uppercase;
         }
 
-        .shop-header span {
+        .shop-header a {
             font-size: 9px;
 
             color: #666;
@@ -249,6 +250,12 @@
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
+
+            transition: color .25s ease;
+        }
+
+        .shop-header a:hover {
+            color: #eee;
         }
 
 
@@ -270,11 +277,14 @@
 
         .product-image {
             width: 100%;
+
             aspect-ratio: 3 / 4;
 
             overflow: hidden;
 
             background: #111;
+
+            position: relative;
         }
 
         .product-image img {
@@ -284,26 +294,27 @@
             object-fit: cover;
 
             filter:
-                brightness(60%)
+                brightness(58%)
                 grayscale(55%)
-                contrast(110%);
+                contrast(115%);
 
             transition:
                 transform .8s ease,
                 filter .8s ease;
         }
 
-        .product:hover img {
+        .product:hover .product-image img {
             transform: scale(1.035);
 
             filter:
-                brightness(70%)
-                grayscale(20%)
+                brightness(68%)
+                grayscale(15%)
                 contrast(110%);
         }
 
         .product-info {
             display: flex;
+
             justify-content: space-between;
 
             padding: 14px 0 45px;
@@ -316,21 +327,24 @@
         }
 
         .product-price {
-            color: #777;
+            color: #666;
         }
 
 
         /* =========================
-           LARGE CAMPAIGN
+           CAMPAIGN
         ========================= */
 
         .campaign {
             position: relative;
 
+            width: 100%;
             height: 100vh;
             min-height: 700px;
 
             overflow: hidden;
+
+            border-top: 1px solid #1d1d1d;
         }
 
         .campaign img {
@@ -343,25 +357,51 @@
                 brightness(38%)
                 contrast(120%)
                 grayscale(50%);
+
+            transition: transform 1.2s ease;
         }
 
-        .campaign-title {
+        .campaign:hover img {
+            transform: scale(1.02);
+        }
+
+        .campaign::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 50%,
+                    rgba(0,0,0,.75)
+                );
+        }
+
+        .campaign-info {
             position: absolute;
 
-            left: 50%;
-            top: 50%;
+            left: 28px;
+            bottom: 28px;
 
-            transform: translate(-50%, -50%);
+            z-index: 2;
 
-            font-family: "MedievalSharp", cursive;
+            display: flex;
 
-            font-size: clamp(70px, 12vw, 180px);
+            flex-direction: column;
 
-            white-space: nowrap;
+            gap: 7px;
 
-            font-weight: 400;
+            font-size: 9px;
 
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .campaign-info span {
+            color: #888;
         }
 
 
@@ -377,6 +417,7 @@
 
         .footer-main {
             display: flex;
+
             justify-content: space-between;
 
             min-height: 400px;
@@ -398,6 +439,7 @@
 
         .footer-column {
             display: flex;
+
             flex-direction: column;
 
             gap: 12px;
@@ -439,6 +481,7 @@
             border-top: 1px solid #1b1b1b;
 
             display: flex;
+
             justify-content: space-between;
 
             font-size: 8px;
@@ -458,6 +501,8 @@
         @media (max-width: 700px) {
 
             header {
+                height: 65px;
+
                 padding: 0 18px;
             }
 
@@ -467,6 +512,7 @@
 
             nav {
                 gap: 14px;
+
                 font-size: 8px;
             }
 
@@ -484,14 +530,9 @@
                 bottom: 22px;
             }
 
-            .intro {
-                min-height: 60vh;
-
-                padding: 100px 18px;
-            }
-
             .editorial {
                 height: 75vh;
+                min-height: 550px;
             }
 
             .editorial-caption {
@@ -500,7 +541,7 @@
             }
 
             .shop {
-                padding: 100px 18px;
+                padding: 100px 18px 110px;
             }
 
             .products {
@@ -519,10 +560,12 @@
 
             .campaign {
                 height: 75vh;
+                min-height: 550px;
             }
 
-            .campaign-title {
-                font-size: 70px;
+            .campaign-info {
+                left: 18px;
+                bottom: 20px;
             }
 
             footer {
@@ -553,7 +596,7 @@
 
 
 <!-- =========================
-     NAV
+     NAVIGATION
 ========================= -->
 
 <header>
@@ -580,27 +623,18 @@
 
     <img
         src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=2400&q=90"
-        alt="VOID DEPT."
+        alt="VOID DEPT. campaign"
     >
 
     <div class="hero-info">
+
         <span>VOID DEPT.</span>
+
         <br>
+
         New arrivals
+
     </div>
-
-</section>
-
-
-<!-- =========================
-     INTRO
-========================= -->
-
-<section class="intro">
-
-    <h1>
-        VØID DEPT.
-    </h1>
 
 </section>
 
@@ -631,9 +665,13 @@
 
     <div class="shop-header">
 
-        <h2>Selected Garments</h2>
+        <h2>
+            Selected garments
+        </h2>
 
-        <span>View all</span>
+        <a href="#">
+            View all
+        </a>
 
     </div>
 
@@ -641,26 +679,35 @@
     <div class="products">
 
 
+        <!-- PRODUCT 01 -->
+
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim"
+                    alt="Denim I"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Denim I</span>
-                <span class="product-price">$180</span>
+                <span>
+                    Denim I
+                </span>
+
+                <span class="product-price">
+                    $180
+                </span>
 
             </div>
 
         </a>
 
+
+        <!-- PRODUCT 02 -->
 
         <a href="#" class="product">
 
@@ -668,20 +715,27 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1400&q=90"
-                    alt="T-Shirt"
+                    alt="Essential I"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Essential I</span>
-                <span class="product-price">$85</span>
+                <span>
+                    Essential I
+                </span>
+
+                <span class="product-price">
+                    $85
+                </span>
 
             </div>
 
         </a>
 
+
+        <!-- PRODUCT 03 -->
 
         <a href="#" class="product">
 
@@ -689,20 +743,27 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1400&q=90"
-                    alt="Jacket"
+                    alt="Outerwear I"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Outerwear I</span>
-                <span class="product-price">$240</span>
+                <span>
+                    Outerwear I
+                </span>
+
+                <span class="product-price">
+                    $240
+                </span>
 
             </div>
 
         </a>
 
+
+        <!-- PRODUCT 04 -->
 
         <a href="#" class="product">
 
@@ -710,20 +771,27 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim"
+                    alt="Denim II"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Denim II</span>
-                <span class="product-price">$195</span>
+                <span>
+                    Denim II
+                </span>
+
+                <span class="product-price">
+                    $195
+                </span>
 
             </div>
 
         </a>
 
+
+        <!-- PRODUCT 05 -->
 
         <a href="#" class="product">
 
@@ -731,20 +799,27 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Garment"
+                    alt="Garment I"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Garment I</span>
-                <span class="product-price">$160</span>
+                <span>
+                    Garment I
+                </span>
+
+                <span class="product-price">
+                    $160
+                </span>
 
             </div>
 
         </a>
 
+
+        <!-- PRODUCT 06 -->
 
         <a href="#" class="product">
 
@@ -752,15 +827,20 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim"
+                    alt="Denim III"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>Denim III</span>
-                <span class="product-price">$210</span>
+                <span>
+                    Denim III
+                </span>
+
+                <span class="product-price">
+                    $210
+                </span>
 
             </div>
 
@@ -783,8 +863,12 @@
         alt="VOID DEPT. campaign"
     >
 
-    <div class="campaign-title">
-        VØID
+    <div class="campaign-info">
+
+        <span>VOID DEPT.</span>
+
+        Autumn / Winter 2026
+
     </div>
 
 </section>
@@ -798,46 +882,84 @@
 
     <div class="footer-main">
 
+
         <div class="footer-logo">
+
             VØID<br>
             DEPT.
+
         </div>
 
 
         <div class="footer-navigation">
 
+
             <div class="footer-column">
 
-                <h3>Explore</h3>
+                <h3>
+                    Explore
+                </h3>
 
-                <a href="#">Shop</a>
-                <a href="#">Collections</a>
-                <a href="#">About</a>
-                <a href="#">Archive</a>
+                <a href="#">
+                    Shop
+                </a>
+
+                <a href="#">
+                    Collections
+                </a>
+
+                <a href="#">
+                    About
+                </a>
+
+                <a href="#">
+                    Archive
+                </a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h3>Information</h3>
+                <h3>
+                    Information
+                </h3>
 
-                <a href="#">Contact</a>
-                <a href="#">Shipping</a>
-                <a href="#">Returns</a>
-                <a href="#">Terms</a>
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h3>Social</h3>
+                <h3>
+                    Social
+                </h3>
 
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    TikTok
+                </a>
 
             </div>
+
 
         </div>
 
