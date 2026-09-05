@@ -7,7 +7,6 @@
 
     <title>VOID DEPT.</title>
 
-    <!-- MedievalSharp -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
@@ -25,8 +24,8 @@
         }
 
         body {
-            background: #090909;
-            color: #e8e5e0;
+            background: #0a0a0a;
+            color: #f1f0ed;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -37,23 +36,24 @@
         }
 
         ::selection {
-            background: #e8e5e0;
-            color: #090909;
+            background: #f1f0ed;
+            color: #0a0a0a;
         }
 
 
-        /* =========================================
+        /* =========================
            NAVIGATION
-        ========================================= */
+        ========================= */
 
         header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 76px;
 
-            padding: 0 30px;
+            width: 100%;
+            height: 70px;
+
+            padding: 0 28px;
 
             display: flex;
             align-items: center;
@@ -61,41 +61,38 @@
 
             z-index: 100;
 
-            background: rgba(9, 9, 9, 0.35);
-            backdrop-filter: blur(12px);
+            color: white;
 
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            mix-blend-mode: difference;
         }
 
         .logo {
             font-family: "MedievalSharp", cursive;
-            font-size: 25px;
+            font-size: 23px;
             letter-spacing: 1px;
-            white-space: nowrap;
         }
 
         nav {
             display: flex;
-            gap: 30px;
+            gap: 28px;
 
-            font-size: 10px;
-            letter-spacing: 1.5px;
+            font-size: 9px;
+            letter-spacing: 1.8px;
             text-transform: uppercase;
         }
 
         nav a {
-            opacity: 0.65;
-            transition: opacity 0.3s ease;
+            transition: opacity .25s ease;
         }
 
         nav a:hover {
-            opacity: 1;
+            opacity: .45;
         }
 
 
-        /* =========================================
+        /* =========================
            HERO
-        ========================================= */
+        ========================= */
 
         .hero {
             position: relative;
@@ -105,8 +102,6 @@
             min-height: 700px;
 
             overflow: hidden;
-
-            background: #050505;
         }
 
         .hero img {
@@ -116,161 +111,170 @@
             object-fit: cover;
 
             filter:
-                grayscale(100%)
-                brightness(35%)
-                contrast(125%);
+                brightness(48%)
+                contrast(115%)
+                grayscale(35%);
 
+            transition: transform 1.5s ease;
+        }
+
+        .hero:hover img {
+            transform: scale(1.015);
+        }
+
+        .hero-info {
+            position: absolute;
+
+            left: 28px;
+            bottom: 30px;
+
+            z-index: 2;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-info span {
+            color: #aaa;
+        }
+
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            min-height: 75vh;
+
+            padding: 160px 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .intro h1 {
+            max-width: 1000px;
+
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(45px, 7vw, 100px);
+
+            font-weight: 400;
+
+            line-height: 1;
+
+            letter-spacing: .5px;
+        }
+
+
+        /* =========================
+           FEATURE IMAGE
+        ========================= */
+
+        .editorial {
+            width: 100%;
+            height: 95vh;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .editorial img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            filter:
+                brightness(50%)
+                contrast(110%)
+                grayscale(25%);
+
+            transition: transform 1.2s ease;
+        }
+
+        .editorial:hover img {
             transform: scale(1.02);
         }
 
-        .hero::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(0,0,0,0.2) 0%,
-                    rgba(0,0,0,0.05) 40%,
-                    rgba(0,0,0,0.85) 100%
-                );
-
-            pointer-events: none;
-        }
-
-        .hero-content {
+        .editorial-caption {
             position: absolute;
 
-            left: 30px;
-            bottom: 45px;
+            left: 28px;
+            bottom: 28px;
 
-            z-index: 2;
-        }
-
-        .hero-label {
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-
-            color: #aaa;
-
-            margin-bottom: 15px;
-        }
-
-        .hero-title {
-            font-family: "MedievalSharp", cursive;
-
-            font-size: clamp(80px, 15vw, 220px);
-
-            line-height: 0.75;
-
+            font-size: 9px;
             letter-spacing: 2px;
-
-            font-weight: 400;
-        }
-
-        .hero-subtitle {
-            margin-top: 25px;
-
-            font-size: 10px;
-            letter-spacing: 2px;
-
-            color: #999;
 
             text-transform: uppercase;
         }
 
 
-        /* =========================================
-           COLLECTION
-        ========================================= */
+        /* =========================
+           SHOP
+        ========================= */
 
-        .collection {
-            padding: 130px 30px;
+        .shop {
+            padding: 150px 28px;
         }
 
-        .section-header {
+        .shop-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
 
-            padding-bottom: 25px;
-
-            border-bottom: 1px solid #252525;
-
-            margin-bottom: 20px;
+            margin-bottom: 60px;
         }
 
-        .section-title {
-            font-family: "MedievalSharp", cursive;
-
-            font-size: 42px;
+        .shop-header h2 {
+            font-size: 10px;
 
             font-weight: 400;
-        }
-
-        .section-number {
-            font-size: 9px;
 
             letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .shop-header span {
+            font-size: 9px;
 
             color: #666;
 
+            letter-spacing: 1.5px;
+
             text-transform: uppercase;
         }
 
 
-        /* =========================================
+        /* =========================
            PRODUCTS
-        ========================================= */
+        ========================= */
 
         .products {
             display: grid;
 
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
 
-            gap: 35px 12px;
+            gap: 12px;
         }
 
         .product {
-            display: block;
-
             cursor: pointer;
         }
 
         .product-image {
-            position: relative;
-
             width: 100%;
-            aspect-ratio: 4 / 5;
+            aspect-ratio: 3 / 4;
 
             overflow: hidden;
 
             background: #111;
-
-            border: 1px solid #1d1d1d;
-        }
-
-        .product-image::after {
-            content: "VIEW";
-
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            font-size: 9px;
-            letter-spacing: 3px;
-
-            color: white;
-
-            opacity: 0;
-
-            transition: opacity 0.4s ease;
         }
 
         .product-image img {
@@ -280,255 +284,149 @@
             object-fit: cover;
 
             filter:
-                grayscale(70%)
-                brightness(55%)
-                contrast(115%);
+                brightness(60%)
+                grayscale(55%)
+                contrast(110%);
 
             transition:
-                transform 0.7s ease,
-                filter 0.7s ease;
+                transform .8s ease,
+                filter .8s ease;
         }
 
-        .product:hover .product-image img {
-            transform: scale(1.045);
+        .product:hover img {
+            transform: scale(1.035);
 
             filter:
-                grayscale(35%)
-                brightness(65%)
-                contrast(115%);
-        }
-
-        .product:hover .product-image::after {
-            opacity: 1;
+                brightness(70%)
+                grayscale(20%)
+                contrast(110%);
         }
 
         .product-info {
             display: flex;
-
             justify-content: space-between;
 
-            padding: 14px 2px 0;
+            padding: 14px 0 45px;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
 
             text-transform: uppercase;
         }
 
-        .product-name {
-            color: #d8d5d0;
-        }
-
         .product-price {
-            color: #666;
+            color: #777;
         }
 
 
-        /* =========================================
-           FEATURE / LOOKBOOK
-        ========================================= */
+        /* =========================
+           LARGE CAMPAIGN
+        ========================= */
 
-        .feature {
+        .campaign {
             position: relative;
 
             height: 100vh;
-            min-height: 650px;
+            min-height: 700px;
 
             overflow: hidden;
-
-            border-top: 1px solid #202020;
-            border-bottom: 1px solid #202020;
         }
 
-        .feature img {
+        .campaign img {
             width: 100%;
             height: 100%;
 
             object-fit: cover;
 
             filter:
-                grayscale(100%)
-                brightness(28%)
-                contrast(130%);
-
-            transition: transform 1.2s ease;
+                brightness(38%)
+                contrast(120%)
+                grayscale(50%);
         }
 
-        .feature:hover img {
-            transform: scale(1.025);
-        }
-
-        .feature-overlay {
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    transparent 0%,
-                    rgba(0,0,0,0.7) 100%
-                );
-        }
-
-        .feature-content {
+        .campaign-title {
             position: absolute;
 
-            left: 30px;
-            bottom: 40px;
+            left: 50%;
+            top: 50%;
 
-            z-index: 2;
-        }
+            transform: translate(-50%, -50%);
 
-        .feature-label {
-            font-size: 9px;
-
-            letter-spacing: 3px;
-
-            color: #888;
-
-            text-transform: uppercase;
-
-            margin-bottom: 15px;
-        }
-
-        .feature-title {
             font-family: "MedievalSharp", cursive;
 
             font-size: clamp(70px, 12vw, 180px);
 
-            line-height: 0.8;
+            white-space: nowrap;
 
             font-weight: 400;
-        }
 
-        .feature-link {
-            display: inline-block;
-
-            margin-top: 25px;
-
-            padding-bottom: 7px;
-
-            border-bottom: 1px solid #777;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-            color: #aaa;
-
-            transition:
-                color 0.3s ease,
-                border-color 0.3s ease;
-        }
-
-        .feature-link:hover {
-            color: white;
-            border-color: white;
+            letter-spacing: 1px;
         }
 
 
-        /* =========================================
-           MANIFESTO
-        ========================================= */
-
-        .manifesto {
-            padding: 170px 30px;
-
-            display: grid;
-
-            grid-template-columns: 1fr 2fr;
-
-            gap: 40px;
-
-            border-bottom: 1px solid #202020;
-        }
-
-        .manifesto-label {
-            font-size: 9px;
-
-            letter-spacing: 3px;
-
-            color: #555;
-
-            text-transform: uppercase;
-        }
-
-        .manifesto-text {
-            font-family: "MedievalSharp", cursive;
-
-            font-size: clamp(35px, 5vw, 75px);
-
-            line-height: 1.05;
-
-            color: #d8d5d0;
-        }
-
-
-        /* =========================================
+        /* =========================
            FOOTER
-        ========================================= */
+        ========================= */
 
         footer {
-            padding: 90px 30px 30px;
+            padding: 100px 28px 25px;
 
-            background: #060606;
+            background: #050505;
         }
 
-        .footer-top {
+        .footer-main {
             display: flex;
-
             justify-content: space-between;
 
-            margin-bottom: 150px;
+            min-height: 400px;
         }
 
         .footer-logo {
             font-family: "MedievalSharp", cursive;
 
-            font-size: clamp(50px, 8vw, 110px);
+            font-size: clamp(55px, 9vw, 130px);
 
-            line-height: 0.8;
+            line-height: .8;
         }
 
-        .footer-links {
+        .footer-navigation {
             display: flex;
 
-            gap: 100px;
+            gap: 90px;
         }
 
         .footer-column {
             display: flex;
-
             flex-direction: column;
 
-            gap: 13px;
+            gap: 12px;
         }
 
-        .footer-heading {
+        .footer-column h3 {
+            margin-bottom: 10px;
+
             font-size: 8px;
+
+            font-weight: 400;
 
             letter-spacing: 2px;
 
             color: #555;
 
             text-transform: uppercase;
-
-            margin-bottom: 8px;
         }
 
         .footer-column a {
-            font-size: 10px;
+            font-size: 9px;
 
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
 
             color: #999;
 
             text-transform: uppercase;
 
-            transition: color 0.3s ease;
+            transition: color .25s ease;
         }
 
         .footer-column a:hover {
@@ -536,13 +434,12 @@
         }
 
         .footer-bottom {
-            display: flex;
-
-            justify-content: space-between;
-
             padding-top: 20px;
 
-            border-top: 1px solid #1d1d1d;
+            border-top: 1px solid #1b1b1b;
+
+            display: flex;
+            justify-content: space-between;
 
             font-size: 8px;
 
@@ -554,25 +451,22 @@
         }
 
 
-        /* =========================================
+        /* =========================
            MOBILE
-        ========================================= */
+        ========================= */
 
         @media (max-width: 700px) {
 
             header {
-                height: 65px;
-
                 padding: 0 18px;
             }
 
             .logo {
-                font-size: 20px;
+                font-size: 19px;
             }
 
             nav {
-                gap: 12px;
-
+                gap: 14px;
                 font-size: 8px;
             }
 
@@ -581,58 +475,68 @@
                 display: none;
             }
 
-            .hero-content {
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero-info {
                 left: 18px;
-                bottom: 30px;
+                bottom: 22px;
             }
 
-            .hero-title {
-                font-size: 90px;
+            .intro {
+                min-height: 60vh;
+
+                padding: 100px 18px;
             }
 
-            .collection {
-                padding: 90px 18px;
+            .editorial {
+                height: 75vh;
             }
 
-            .section-title {
-                font-size: 32px;
+            .editorial-caption {
+                left: 18px;
+                bottom: 20px;
+            }
+
+            .shop {
+                padding: 100px 18px;
             }
 
             .products {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 8px;
             }
 
-            .feature-content {
-                left: 18px;
-                bottom: 30px;
+            .product-info {
+                flex-direction: column;
+
+                gap: 5px;
+
+                padding-bottom: 30px;
             }
 
-            .manifesto {
-                padding: 100px 18px;
-
-                grid-template-columns: 1fr;
-
-                gap: 30px;
+            .campaign {
+                height: 75vh;
             }
 
-            .manifesto-text {
-                font-size: 38px;
+            .campaign-title {
+                font-size: 70px;
             }
 
             footer {
-                padding: 70px 18px 25px;
+                padding: 80px 18px 20px;
             }
 
-            .footer-top {
+            .footer-main {
                 flex-direction: column;
 
-                gap: 70px;
-
-                margin-bottom: 100px;
+                gap: 90px;
             }
 
-            .footer-links {
-                gap: 50px;
+            .footer-navigation {
+                gap: 45px;
             }
 
             .footer-bottom {
@@ -648,9 +552,9 @@
 <body>
 
 
-<!-- =========================================
-     NAVIGATION
-========================================= -->
+<!-- =========================
+     NAV
+========================= -->
 
 <header>
 
@@ -659,8 +563,8 @@
     </a>
 
     <nav>
-        <a href="#">Shop</a>
-        <a href="#">Archive</a>
+        <a href="#shop">Shop</a>
+        <a href="#">Collections</a>
         <a href="#">About</a>
         <a href="#">Cart (0)</a>
     </nav>
@@ -668,51 +572,68 @@
 </header>
 
 
-<!-- =========================================
+<!-- =========================
      HERO
-========================================= -->
+========================= -->
 
 <section class="hero">
 
     <img
-        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=90"
-        alt="VOID DEPT. Collection"
+        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=2400&q=90"
+        alt="VOID DEPT."
     >
 
-    <div class="hero-content">
-
-        <div class="hero-label">
-            Collection 001 — 2026
-        </div>
-
-        <h1 class="hero-title">
-            VØID
-        </h1>
-
-        <div class="hero-subtitle">
-            Garments for the undefined
-        </div>
-
+    <div class="hero-info">
+        <span>VOID DEPT.</span>
+        <br>
+        New arrivals
     </div>
 
 </section>
 
 
-<!-- =========================================
-     COLLECTION
-========================================= -->
+<!-- =========================
+     INTRO
+========================= -->
 
-<section class="collection">
+<section class="intro">
 
-    <div class="section-header">
+    <h1>
+        VØID DEPT.
+    </h1>
 
-        <h2 class="section-title">
-            Collection 001
-        </h2>
+</section>
 
-        <span class="section-number">
-            04 Pieces
-        </span>
+
+<!-- =========================
+     EDITORIAL
+========================= -->
+
+<section class="editorial">
+
+    <img
+        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2400&q=90"
+        alt="VOID DEPT. editorial"
+    >
+
+    <div class="editorial-caption">
+        Department — 2026
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SHOP
+========================= -->
+
+<section class="shop" id="shop">
+
+    <div class="shop-header">
+
+        <h2>Selected Garments</h2>
+
+        <span>View all</span>
 
     </div>
 
@@ -720,35 +641,26 @@
     <div class="products">
 
 
-        <!-- PRODUCT 01 -->
-
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
-                    alt="VOID Denim 001"
+                    alt="Denim"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-name">
-                    VOID Denim 001
-                </span>
-
-                <span class="product-price">
-                    $180
-                </span>
+                <span>Denim I</span>
+                <span class="product-price">$180</span>
 
             </div>
 
         </a>
 
-
-        <!-- PRODUCT 02 -->
 
         <a href="#" class="product">
 
@@ -756,27 +668,20 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1400&q=90"
-                    alt="VOID Tee 001"
+                    alt="T-Shirt"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-name">
-                    VOID Tee 001
-                </span>
-
-                <span class="product-price">
-                    $85
-                </span>
+                <span>Essential I</span>
+                <span class="product-price">$85</span>
 
             </div>
 
         </a>
 
-
-        <!-- PRODUCT 03 -->
 
         <a href="#" class="product">
 
@@ -784,27 +689,20 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1400&q=90"
-                    alt="VOID Jacket 001"
+                    alt="Jacket"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-name">
-                    VOID Jacket 001
-                </span>
-
-                <span class="product-price">
-                    $240
-                </span>
+                <span>Outerwear I</span>
+                <span class="product-price">$240</span>
 
             </div>
 
         </a>
 
-
-        <!-- PRODUCT 04 -->
 
         <a href="#" class="product">
 
@@ -812,20 +710,57 @@
 
                 <img
                     src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1400&q=90"
-                    alt="VOID Denim 002"
+                    alt="Denim"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span class="product-name">
-                    VOID Denim 002
-                </span>
+                <span>Denim II</span>
+                <span class="product-price">$195</span>
 
-                <span class="product-price">
-                    $195
-                </span>
+            </div>
+
+        </a>
+
+
+        <a href="#" class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1400&q=90"
+                    alt="Garment"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <span>Garment I</span>
+                <span class="product-price">$160</span>
+
+            </div>
+
+        </a>
+
+
+        <a href="#" class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
+                    alt="Denim"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <span>Denim III</span>
+                <span class="product-price">$210</span>
 
             </div>
 
@@ -837,65 +772,31 @@
 </section>
 
 
-<!-- =========================================
-     LOOKBOOK
-========================================= -->
+<!-- =========================
+     CAMPAIGN
+========================= -->
 
-<section class="feature">
+<section class="campaign">
 
     <img
-        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2400&q=90"
-        alt="VOID DEPT. Archive"
+        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=90"
+        alt="VOID DEPT. campaign"
     >
 
-    <div class="feature-overlay"></div>
-
-    <div class="feature-content">
-
-        <div class="feature-label">
-            VOID DEPT. — Archive
-        </div>
-
-        <h2 class="feature-title">
-            001
-        </h2>
-
-        <a href="#" class="feature-link">
-            Enter Archive
-        </a>
-
+    <div class="campaign-title">
+        VØID
     </div>
 
 </section>
 
 
-<!-- =========================================
-     MANIFESTO
-========================================= -->
-
-<section class="manifesto">
-
-    <div class="manifesto-label">
-        Department Statement
-    </div>
-
-    <div class="manifesto-text">
-        We create garments
-        for those who exist
-        somewhere between
-        nothing and everything.
-    </div>
-
-</section>
-
-
-<!-- =========================================
+<!-- =========================
      FOOTER
-========================================= -->
+========================= -->
 
 <footer>
 
-    <div class="footer-top">
+    <div class="footer-main">
 
         <div class="footer-logo">
             VØID<br>
@@ -903,39 +804,35 @@
         </div>
 
 
-        <div class="footer-links">
+        <div class="footer-navigation">
 
             <div class="footer-column">
 
-                <div class="footer-heading">
-                    Department
-                </div>
+                <h3>Explore</h3>
 
                 <a href="#">Shop</a>
-                <a href="#">Archive</a>
+                <a href="#">Collections</a>
                 <a href="#">About</a>
+                <a href="#">Archive</a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <div class="footer-heading">
-                    Information
-                </div>
+                <h3>Information</h3>
 
                 <a href="#">Contact</a>
                 <a href="#">Shipping</a>
                 <a href="#">Returns</a>
+                <a href="#">Terms</a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <div class="footer-heading">
-                    Social
-                </div>
+                <h3>Social</h3>
 
                 <a href="#">Instagram</a>
                 <a href="#">TikTok</a>
