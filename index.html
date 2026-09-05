@@ -23,8 +23,8 @@
         }
 
         body {
-            background: #090909;
-            color: #eee;
+            background: #080808;
+            color: #f1f1ed;
             font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
@@ -35,14 +35,14 @@
         }
 
         ::selection {
-            background: #eee;
-            color: #090909;
+            background: #f1f1ed;
+            color: #080808;
         }
 
 
-        /* =========================
-           NAVIGATION
-        ========================= */
+        /* =========================================
+           NAV
+        ========================================= */
 
         header {
             position: fixed;
@@ -50,9 +50,9 @@
             left: 0;
 
             width: 100%;
-            height: 72px;
+            height: 70px;
 
-            padding: 0 28px;
+            padding: 0 25px;
 
             display: flex;
             align-items: center;
@@ -60,28 +60,29 @@
 
             z-index: 100;
 
-            color: white;
-
             mix-blend-mode: difference;
+            color: white;
         }
 
         .logo {
             font-family: "MedievalSharp", cursive;
-            font-size: 23px;
+
+            font-size: 24px;
+
             letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            gap: 30px;
+            gap: 28px;
 
             font-size: 9px;
             letter-spacing: 1.8px;
+
             text-transform: uppercase;
         }
 
         nav a {
-            opacity: .85;
             transition: opacity .25s ease;
         }
 
@@ -90,145 +91,379 @@
         }
 
 
-        /* =========================
+        /* =========================================
            HERO
-        ========================= */
+        ========================================= */
 
         .hero {
             position: relative;
 
-            width: 100%;
             height: 100vh;
             min-height: 700px;
 
             overflow: hidden;
 
-            background: #050505;
+            background: #080808;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .hero img {
+        .hero-title {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 100%;
+
+            text-align: center;
+
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(90px, 18vw, 280px);
+
+            line-height: .75;
+
+            font-weight: 400;
+
+            letter-spacing: 2px;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            color: #111;
+
+            white-space: nowrap;
+        }
+
+        .hero-small {
+            position: absolute;
+
+            top: 105px;
+            left: 25px;
+
+            z-index: 10;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            color: #666;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           SHIRT WHEEL
+        ========================================= */
+
+        .wheel-area {
+            position: relative;
+
+            width: 100%;
+            height: 650px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            perspective: 1400px;
+
+            z-index: 5;
+        }
+
+        .wheel {
+            position: relative;
+
+            width: 390px;
+            height: 390px;
+
+            transform-style: preserve-3d;
+
+            transition: transform .7s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .shirt {
+            position: absolute;
+
+            width: 280px;
+            height: 330px;
+
+            left: 55px;
+            top: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transform-style: preserve-3d;
+
+            transition:
+                filter .5s ease,
+                opacity .5s ease;
+        }
+
+        .shirt img {
             width: 100%;
             height: 100%;
 
-            object-fit: cover;
+            object-fit: contain;
 
             filter:
-                brightness(48%)
-                contrast(115%)
-                grayscale(30%);
+                drop-shadow(0 30px 30px rgba(0,0,0,.6));
 
-            transform: scale(1.01);
-
-            transition: transform 1.5s ease;
-        }
-
-        .hero:hover img {
-            transform: scale(1.025);
-        }
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(0,0,0,.1),
-                    rgba(0,0,0,.05) 50%,
-                    rgba(0,0,0,.75)
-                );
+            user-select: none;
 
             pointer-events: none;
         }
 
-        .hero-info {
+        .shirt-label {
             position: absolute;
 
-            left: 28px;
-            bottom: 28px;
+            bottom: -30px;
 
-            z-index: 2;
+            left: 50%;
 
-            font-size: 9px;
-            line-height: 1.7;
+            transform: translateX(-50%);
+
+            font-size: 8px;
 
             letter-spacing: 2px;
+
+            color: #666;
+
+            white-space: nowrap;
 
             text-transform: uppercase;
         }
 
-        .hero-info span {
-            color: #aaa;
+
+        /* =========================================
+           WHEEL CONTROLS
+        ========================================= */
+
+        .wheel-controls {
+            position: absolute;
+
+            left: 25px;
+            right: 25px;
+            bottom: 45px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 10;
+        }
+
+        .wheel-button {
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid #333;
+
+            border-radius: 50%;
+
+            background: transparent;
+
+            color: #eee;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition:
+                background .25s ease,
+                color .25s ease;
+        }
+
+        .wheel-button:hover {
+            background: #eee;
+            color: #080808;
+        }
+
+        .wheel-count {
+            font-size: 8px;
+
+            color: #555;
+
+            letter-spacing: 2px;
         }
 
 
-        /* =========================
-           EDITORIAL
-        ========================= */
+        /* =========================================
+           SELECTED PRODUCT
+        ========================================= */
 
-        .editorial {
-            position: relative;
+        .selected-product {
+            position: absolute;
 
+            left: 50%;
+            bottom: 70px;
+
+            transform: translateX(-50%);
+
+            z-index: 20;
+
+            text-align: center;
+
+            pointer-events: none;
+        }
+
+        .selected-product h2 {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: 27px;
+
+            font-weight: 400;
+
+            margin-bottom: 7px;
+        }
+
+        .selected-product p {
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            color: #777;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           MARQUEE
+        ========================================= */
+
+        .marquee {
             width: 100%;
-            height: 100vh;
-            min-height: 700px;
 
             overflow: hidden;
 
-            border-bottom: 1px solid #1d1d1d;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+
+            padding: 16px 0;
+
+            white-space: nowrap;
+
+            background: #0b0b0b;
         }
 
-        .editorial img {
+        .marquee-track {
+            display: inline-block;
+
+            animation: marquee 18s linear infinite;
+        }
+
+        .marquee span {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: 24px;
+
+            margin-right: 55px;
+
+            color: #d8d8d4;
+        }
+
+        @keyframes marquee {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+        /* =========================================
+           FEATURE
+        ========================================= */
+
+        .feature {
+            position: relative;
+
+            height: 90vh;
+            min-height: 600px;
+
+            overflow: hidden;
+        }
+
+        .feature img {
             width: 100%;
             height: 100%;
 
             object-fit: cover;
 
             filter:
-                brightness(45%)
-                contrast(115%)
-                grayscale(40%);
+                grayscale(100%)
+                brightness(38%)
+                contrast(120%);
 
-            transition: transform 1.2s ease;
+            transition: transform 1s ease;
         }
 
-        .editorial:hover img {
-            transform: scale(1.02);
+        .feature:hover img {
+            transform: scale(1.025);
         }
 
-        .editorial-caption {
+        .feature-info {
             position: absolute;
 
-            left: 28px;
-            bottom: 28px;
+            left: 25px;
+            bottom: 30px;
 
-            font-size: 9px;
+            z-index: 2;
+        }
+
+        .feature-info h2 {
+            font-family: "MedievalSharp", cursive;
+
+            font-size: clamp(55px, 9vw, 130px);
+
+            font-weight: 400;
+
+            line-height: .8;
+        }
+
+        .feature-info p {
+            margin-top: 18px;
+
+            font-size: 8px;
 
             letter-spacing: 2px;
 
-            color: #aaa;
+            color: #999;
 
             text-transform: uppercase;
         }
 
 
-        /* =========================
+        /* =========================================
            SHOP
-        ========================= */
+        ========================================= */
 
         .shop {
-            padding: 150px 28px 170px;
+            padding: 120px 25px;
         }
 
         .shop-header {
             display: flex;
 
             justify-content: space-between;
+
             align-items: center;
 
-            margin-bottom: 55px;
+            margin-bottom: 45px;
         }
 
         .shop-header h2 {
@@ -242,48 +477,31 @@
         }
 
         .shop-header a {
-            font-size: 9px;
+            font-size: 8px;
 
             color: #666;
 
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
 
             text-transform: uppercase;
-
-            transition: color .25s ease;
         }
-
-        .shop-header a:hover {
-            color: #eee;
-        }
-
-
-        /* =========================
-           PRODUCTS
-        ========================= */
 
         .products {
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
 
-            gap: 12px;
-        }
-
-        .product {
-            cursor: pointer;
+            gap: 10px;
         }
 
         .product-image {
-            width: 100%;
+            position: relative;
 
             aspect-ratio: 3 / 4;
 
             overflow: hidden;
 
             background: #111;
-
-            position: relative;
         }
 
         .product-image img {
@@ -293,22 +511,20 @@
             object-fit: cover;
 
             filter:
-                brightness(58%)
-                grayscale(55%)
-                contrast(115%);
+                grayscale(80%)
+                brightness(55%);
 
             transition:
-                transform .8s ease,
-                filter .8s ease;
+                transform .7s ease,
+                filter .7s ease;
         }
 
         .product:hover .product-image img {
-            transform: scale(1.035);
+            transform: scale(1.04);
 
             filter:
-                brightness(68%)
-                grayscale(15%)
-                contrast(110%);
+                grayscale(20%)
+                brightness(70%);
         }
 
         .product-info {
@@ -316,11 +532,11 @@
 
             justify-content: space-between;
 
-            padding: 14px 0 45px;
+            padding: 12px 0 35px;
 
-            font-size: 9px;
+            font-size: 8px;
 
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
 
             text-transform: uppercase;
         }
@@ -330,162 +546,76 @@
         }
 
 
-        /* =========================
-           CAMPAIGN
-        ========================= */
-
-        .campaign {
-            position: relative;
-
-            width: 100%;
-            height: 100vh;
-            min-height: 700px;
-
-            overflow: hidden;
-
-            border-top: 1px solid #1d1d1d;
-        }
-
-        .campaign img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            filter:
-                brightness(38%)
-                contrast(120%)
-                grayscale(50%);
-
-            transition: transform 1.2s ease;
-        }
-
-        .campaign:hover img {
-            transform: scale(1.02);
-        }
-
-        .campaign::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    transparent 50%,
-                    rgba(0,0,0,.75)
-                );
-        }
-
-        .campaign-info {
-            position: absolute;
-
-            left: 28px;
-            bottom: 28px;
-
-            z-index: 2;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 7px;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-        }
-
-        .campaign-info span {
-            color: #888;
-        }
-
-
-        /* =========================
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
-            padding: 100px 28px 25px;
+            padding: 100px 25px 25px;
 
-            background: #050505;
-        }
-
-        .footer-main {
-            display: flex;
-
-            justify-content: space-between;
-
-            min-height: 400px;
+            border-top: 1px solid #1c1c1c;
         }
 
         .footer-logo {
             font-family: "MedievalSharp", cursive;
 
-            font-size: clamp(55px, 9vw, 130px);
+            font-size: clamp(70px, 13vw, 190px);
 
-            line-height: .8;
+            line-height: .75;
+
+            margin-bottom: 120px;
         }
 
-        .footer-navigation {
-            display: flex;
-
-            gap: 90px;
-        }
-
-        .footer-column {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 10px;
-
-            font-size: 8px;
-
-            font-weight: 400;
-
-            letter-spacing: 2px;
-
-            color: #555;
-
-            text-transform: uppercase;
-        }
-
-        .footer-column a {
-            font-size: 9px;
-
-            letter-spacing: 1.2px;
-
-            color: #999;
-
-            text-transform: uppercase;
-
-            transition: color .25s ease;
-        }
-
-        .footer-column a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            padding-top: 20px;
-
-            border-top: 1px solid #1b1b1b;
-
+        .footer-links {
             display: flex;
 
             justify-content: space-between;
 
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid #222;
+        }
+
+        .footer-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .footer-group span {
             font-size: 8px;
 
+            color: #555;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+        }
+
+        .footer-group a {
+            font-size: 9px;
+
+            color: #aaa;
+
             letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .footer-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding-top: 20px;
+
+            font-size: 7px;
+
+            letter-spacing: 1.5px;
 
             color: #444;
 
@@ -493,26 +623,18 @@
         }
 
 
-        /* =========================
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 700px) {
 
             header {
-                height: 65px;
-
                 padding: 0 18px;
-            }
-
-            .logo {
-                font-size: 19px;
             }
 
             nav {
                 gap: 14px;
-
-                font-size: 8px;
             }
 
             nav a:nth-child(2),
@@ -521,71 +643,54 @@
             }
 
             .hero {
-                min-height: 600px;
+                min-height: 650px;
             }
 
-            .hero-info {
-                left: 18px;
-                bottom: 22px;
+            .hero-title {
+                font-size: 100px;
             }
 
-            .editorial {
-                height: 75vh;
-                min-height: 550px;
+            .wheel-area {
+                height: 570px;
             }
 
-            .editorial-caption {
-                left: 18px;
-                bottom: 20px;
+            .wheel {
+                transform: scale(.78);
             }
 
-            .shop {
-                padding: 100px 18px 110px;
+            .shirt {
+                width: 260px;
+                height: 310px;
+            }
+
+            .selected-product {
+                bottom: 55px;
+            }
+
+            .selected-product h2 {
+                font-size: 23px;
             }
 
             .products {
                 grid-template-columns: repeat(2, 1fr);
-
-                gap: 8px;
             }
 
-            .product-info {
-                flex-direction: column;
-
-                gap: 5px;
-
-                padding-bottom: 30px;
+            .shop {
+                padding: 90px 18px;
             }
 
-            .campaign {
+            .feature {
                 height: 75vh;
-                min-height: 550px;
-            }
-
-            .campaign-info {
-                left: 18px;
-                bottom: 20px;
             }
 
             footer {
                 padding: 80px 18px 20px;
             }
 
-            .footer-main {
-                flex-direction: column;
-
-                gap: 90px;
+            .footer-links {
+                gap: 30px;
             }
 
-            .footer-navigation {
-                gap: 45px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-
-                gap: 8px;
-            }
         }
 
     </style>
@@ -594,9 +699,9 @@
 <body>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- =========================================
+     NAV
+========================================= -->
 
 <header>
 
@@ -606,66 +711,207 @@
 
     <nav>
         <a href="#shop">Shop</a>
-        <a href="#">Collections</a>
-        <a href="#">About</a>
+        <a href="#featured">Featured</a>
+        <a href="#">Archive</a>
         <a href="#">Cart (0)</a>
     </nav>
 
 </header>
 
 
-<!-- =========================
+<!-- =========================================
      HERO
-========================= -->
+========================================= -->
 
 <section class="hero">
 
+    <div class="hero-small">
+        Department of the undefined
+    </div>
+
+    <div class="hero-title">
+        VØID
+    </div>
+
+
+    <!-- SHIRT WHEEL -->
+
+    <div class="wheel-area">
+
+        <div class="wheel" id="wheel">
+
+
+            <!-- SHIRT 1 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 01"
+                >
+
+            </div>
+
+
+            <!-- SHIRT 2 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 02"
+                >
+
+            </div>
+
+
+            <!-- SHIRT 3 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 03"
+                >
+
+            </div>
+
+
+            <!-- SHIRT 4 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 04"
+                >
+
+            </div>
+
+
+            <!-- SHIRT 5 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 05"
+                >
+
+            </div>
+
+
+            <!-- SHIRT 6 -->
+
+            <div class="shirt">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=90"
+                    alt="Shirt 06"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- SELECTED PRODUCT -->
+
+        <div class="selected-product">
+
+            <h2 id="productName">
+                VOID TEE 01
+            </h2>
+
+            <p id="productPrice">
+                $85 — Available Now
+            </p>
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="wheel-controls">
+
+            <button class="wheel-button" id="prev">
+                ←
+            </button>
+
+            <div class="wheel-count" id="count">
+                01 / 06
+            </div>
+
+            <button class="wheel-button" id="next">
+                →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MARQUEE
+========================================= -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>VOID DEPT.</span>
+        <span>GARMENTS FOR THE UNDEFINED</span>
+        <span>VOID DEPT.</span>
+        <span>GARMENTS FOR THE UNDEFINED</span>
+
+        <span>VOID DEPT.</span>
+        <span>GARMENTS FOR THE UNDEFINED</span>
+        <span>VOID DEPT.</span>
+        <span>GARMENTS FOR THE UNDEFINED</span>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     FEATURE
+========================================= -->
+
+<section class="feature" id="featured">
+
     <img
-        src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=2400&q=90"
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2400&q=90"
         alt="VOID DEPT. campaign"
     >
 
-    <div class="hero-info">
+    <div class="feature-info">
 
-        <span>VOID DEPT.</span>
+        <h2>
+            DEPT.
+        </h2>
 
-        <br>
-
-        New arrivals
+        <p>
+            Autumn / Winter — 2026
+        </p>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     EDITORIAL
-========================= -->
-
-<section class="editorial">
-
-    <img
-        src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=2400&q=90"
-        alt="VOID DEPT. editorial"
-    >
-
-    <div class="editorial-caption">
-        Department — 2026
-    </div>
-
-</section>
-
-
-<!-- =========================
+<!-- =========================================
      SHOP
-========================= -->
+========================================= -->
 
 <section class="shop" id="shop">
 
     <div class="shop-header">
 
         <h2>
-            Selected garments
+            Latest garments
         </h2>
 
         <a href="#">
@@ -678,168 +924,84 @@
     <div class="products">
 
 
-        <!-- PRODUCT 01 -->
-
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim I"
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=90"
+                    alt="VOID Tee"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>
-                    Denim I
-                </span>
-
-                <span class="product-price">
-                    $180
-                </span>
+                <span>Void Tee 01</span>
+                <span class="product-price">$85</span>
 
             </div>
 
         </a>
 
 
-        <!-- PRODUCT 02 -->
-
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1400&q=90"
-                    alt="Essential I"
+                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=90"
+                    alt="VOID Denim"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>
-                    Essential I
-                </span>
-
-                <span class="product-price">
-                    $85
-                </span>
+                <span>Void Denim 01</span>
+                <span class="product-price">$180</span>
 
             </div>
 
         </a>
 
 
-        <!-- PRODUCT 03 -->
-
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1400&q=90"
-                    alt="Outerwear I"
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=90"
+                    alt="VOID Jacket"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>
-                    Outerwear I
-                </span>
-
-                <span class="product-price">
-                    $240
-                </span>
+                <span>Void Jacket 01</span>
+                <span class="product-price">$240</span>
 
             </div>
 
         </a>
 
 
-        <!-- PRODUCT 04 -->
-
         <a href="#" class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim II"
+                    src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=90"
+                    alt="VOID Garment"
                 >
 
             </div>
 
             <div class="product-info">
 
-                <span>
-                    Denim II
-                </span>
-
-                <span class="product-price">
-                    $195
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <!-- PRODUCT 05 -->
-
-        <a href="#" class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Garment I"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <span>
-                    Garment I
-                </span>
-
-                <span class="product-price">
-                    $160
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <!-- PRODUCT 06 -->
-
-        <a href="#" class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Denim III"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <span>
-                    Denim III
-                </span>
-
-                <span class="product-price">
-                    $210
-                </span>
+                <span>Void Garment 01</span>
+                <span class="product-price">$160</span>
 
             </div>
 
@@ -851,114 +1013,47 @@
 </section>
 
 
-<!-- =========================
-     CAMPAIGN
-========================= -->
-
-<section class="campaign">
-
-    <img
-        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=90"
-        alt="VOID DEPT. campaign"
-    >
-
-    <div class="campaign-info">
-
-        <span>VOID DEPT.</span>
-
-        Autumn / Winter 2026
-
-    </div>
-
-</section>
-
-
-<!-- =========================
+<!-- =========================================
      FOOTER
-========================= -->
+========================================= -->
 
 <footer>
 
-    <div class="footer-main">
+    <div class="footer-logo">
+        VØID DEPT.
+    </div>
 
 
-        <div class="footer-logo">
+    <div class="footer-links">
 
-            VØID<br>
-            DEPT.
+        <div class="footer-group">
+
+            <span>Explore</span>
+
+            <a href="#">Shop</a>
+            <a href="#">Archive</a>
+            <a href="#">About</a>
 
         </div>
 
 
-        <div class="footer-navigation">
+        <div class="footer-group">
+
+            <span>Information</span>
+
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+
+        </div>
 
 
-            <div class="footer-column">
+        <div class="footer-group">
 
-                <h3>
-                    Explore
-                </h3>
+            <span>Social</span>
 
-                <a href="#">
-                    Shop
-                </a>
-
-                <a href="#">
-                    Collections
-                </a>
-
-                <a href="#">
-                    About
-                </a>
-
-                <a href="#">
-                    Archive
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
-                    Information
-                </h3>
-
-                <a href="#">
-                    Contact
-                </a>
-
-                <a href="#">
-                    Shipping
-                </a>
-
-                <a href="#">
-                    Returns
-                </a>
-
-                <a href="#">
-                    Terms
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
-                    Social
-                </h3>
-
-                <a href="#">
-                    Instagram
-                </a>
-
-                <a href="#">
-                    TikTok
-                </a>
-
-            </div>
-
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
 
         </div>
 
@@ -978,6 +1073,203 @@
     </div>
 
 </footer>
+
+
+<script>
+
+    /* =========================================
+       SHIRT WHEEL
+    ========================================= */
+
+    const wheel = document.getElementById("wheel");
+
+    const shirts = document.querySelectorAll(".shirt");
+
+    const nextButton = document.getElementById("next");
+    const prevButton = document.getElementById("prev");
+
+    const productName = document.getElementById("productName");
+    const productPrice = document.getElementById("productPrice");
+
+    const count = document.getElementById("count");
+
+
+    const products = [
+        {
+            name: "VOID TEE 01",
+            price: "$85 — AVAILABLE NOW"
+        },
+        {
+            name: "VOID TEE 02",
+            price: "$90 — AVAILABLE NOW"
+        },
+        {
+            name: "VOID TEE 03",
+            price: "$95 — AVAILABLE NOW"
+        },
+        {
+            name: "VOID TEE 04",
+            price: "$85 — AVAILABLE NOW"
+        },
+        {
+            name: "VOID TEE 05",
+            price: "$110 — AVAILABLE NOW"
+        },
+        {
+            name: "VOID TEE 06",
+            price: "$95 — AVAILABLE NOW"
+        }
+    ];
+
+
+    let current = 0;
+
+    const total = shirts.length;
+
+    const angle = 360 / total;
+
+    const radius = 420;
+
+
+    function updateWheel() {
+
+        shirts.forEach((shirt, index) => {
+
+            const position =
+                (index - current + total) % total;
+
+            const rotation =
+                position * angle;
+
+            shirt.style.transform =
+                `rotateY(${rotation}deg) translateZ(${radius}px)`;
+
+            const normalized =
+                Math.min(position, total - position);
+
+            if (normalized === 0) {
+
+                shirt.style.opacity = "1";
+
+                shirt.style.filter = "brightness(1)";
+
+            } else if (normalized === 1) {
+
+                shirt.style.opacity = ".75";
+
+                shirt.style.filter = "brightness(.65)";
+
+            } else {
+
+                shirt.style.opacity = ".35";
+
+                shirt.style.filter = "brightness(.35)";
+
+            }
+
+        });
+
+
+        wheel.style.transform =
+            `rotateY(${-current * angle}deg)`;
+
+
+        productName.textContent =
+            products[current].name;
+
+
+        productPrice.textContent =
+            products[current].price;
+
+
+        count.textContent =
+            String(current + 1).padStart(2, "0")
+            + " / "
+            + String(total).padStart(2, "0");
+
+    }
+
+
+    function next() {
+
+        current++;
+
+        if (current >= total) {
+            current = 0;
+        }
+
+        updateWheel();
+
+    }
+
+
+    function previous() {
+
+        current--;
+
+        if (current < 0) {
+            current = total - 1;
+        }
+
+        updateWheel();
+
+    }
+
+
+    nextButton.addEventListener("click", next);
+
+    prevButton.addEventListener("click", previous);
+
+
+    /* AUTO ROTATION */
+
+    let autoRotate = setInterval(next, 4000);
+
+
+    function resetAutoRotate() {
+
+        clearInterval(autoRotate);
+
+        autoRotate =
+            setInterval(next, 4000);
+
+    }
+
+
+    nextButton.addEventListener(
+        "click",
+        resetAutoRotate
+    );
+
+    prevButton.addEventListener(
+        "click",
+        resetAutoRotate
+    );
+
+
+    /* KEYBOARD */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "ArrowRight") {
+                next();
+                resetAutoRotate();
+            }
+
+            if (event.key === "ArrowLeft") {
+                previous();
+                resetAutoRotate();
+            }
+
+        }
+    );
+
+
+    updateWheel();
+
+</script>
 
 
 </body>
